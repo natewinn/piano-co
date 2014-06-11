@@ -188,6 +188,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   haml-rails
+  i18n (~> 0.6.9)
   jbuilder (~> 2.0)
   jquery-rails
   launchy

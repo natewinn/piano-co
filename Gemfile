@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'devise'
 gem 'carrierwave'
 gem 'jbuilder', '~> 2.0'
+gem 'i18n', '~> 0.6.9'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :test do
