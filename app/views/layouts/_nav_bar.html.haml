@@ -1,0 +1,18 @@
+%nav.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %a.navbar-brand{href: "#"} Piano App
+      %ul.nav.navbar-nav
+        %li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path
+        %li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path
+        %li{:class => "#{'active' if current_page?(root_path)}"}=link_to "Home", root_path
+      .navbar-left
+        %form.navbar-form{role: "search"}
+          .form-group
+            %input.form-control{placeholder: "Search", type: "text"}/
+          %button.btn.btn-default{type: "submit"} Submit      
+      .navbar-right
+        - if user_signed_in?
+          = link_to('Log out', destroy_user_session_path, :method => :delete, class: "button btn btn-default navbar-btn")
+        - else
+          = link_to('Log in', new_user_session_path, class: "button btn btn-default navbar-btn")

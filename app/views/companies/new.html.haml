@@ -1,0 +1,25 @@
+/ / - Page Title -/
+/ - content_for(:title, "Company Profile")
+
+/ = New Business = /
+.container-fluid
+	.col-lg-2
+	.col-lg-8
+		%h2 Enter your business information.
+		= form_for @new_company do |f|
+			= f.text_field :name, :placeholder => "Company", :class => "form-control"
+			%br
+			= f.text_field :phone_number, :placeholder => "Phone Number", :class => "form-control"
+			%br	
+			= f.text_field :address_1, :placeholder => "Address 1", :class => "form-control"
+			%br	
+			= f.text_field :address_2, :placeholder => "Address 2", :class => "form-control"
+			%br	
+			= f.text_field :city, :placeholder => "City", :class => "form-control"
+			%br	
+			= f.text_field :state, :placeholder => "State", :class => "form-control"
+			%br
+			= f.text_field :zip_code, :placeholder => "Zip Code", :class => "form-control"
+			%br
+			= f.submit "Get Started"
+	.col-lg-2

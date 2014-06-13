@@ -30,6 +30,8 @@ GEM
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.2.2)
     callsite (0.0.11)
     carrierwave (0.10.0)
@@ -85,6 +87,8 @@ GEM
     json (1.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -181,6 +185,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.1.1)
   carrierwave
   coffee-rails (~> 4.0.0)
   debugger
@@ -188,10 +193,11 @@ DEPENDENCIES
   factory_girl_rails
   faker
   haml-rails
-  i18n (~> 0.6.9)
+  i18n (= 0.6.9)
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  letter_opener
   meta_request
   pg
   rails (= 4.1.1)
