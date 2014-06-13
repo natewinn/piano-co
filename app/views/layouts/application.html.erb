@@ -7,21 +7,44 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-	<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-  </li>
-	<% else %>
-	  <li>
-	  <%= link_to('Login', new_user_session_path)  %>  
-	  </li>
-	<% end %>
-
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
-  </div>
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <a class="navbar-brand" href="#">Piano App</a>
+	      <ul class="nav navbar-nav">
+	        <li class="<%= 'active' if current_page?(company_path) %>">
+	          <%= link_to "Company", company_path %>
+	        </li>
+	        <li class="<%= 'active' if current_page?(root_path) %>">
+	          <%= link_to "Customers", root_path %>
+	        </li>
+	        <li class="<%= 'active' if current_page?(root_path) %>">
+	          <%= link_to "Calendar", root_path %>
+	        </li>
+	        <li class="<%= 'active' if current_page?(root_path) %>">
+	          <%= link_to "Call List", root_path %>
+	        </li>
+	      </ul>
+	      <div class="navbar-left">
+	        <form class="navbar-form" role="search">
+	          <div class="form-group">
+	            <input class="form-control" placeholder="Search" type="text"></input>
+	          </div>
+	          <button class="btn btn-default" type="submit">Submit</button>
+	        </form>
+	      </div>
+	      <p class="navbar-text"><%= notice %></p>
+	      <p class="navbar-text"><%= alert %></p>
+	      <div class="navbar-right">
+	        <% if user_signed_in? %>
+	          <%= link_to('Log out', destroy_user_session_path, :method => :delete, class: "button btn btn-default navbar-btn") %>
+	        <% else %>
+	          <%= link_to('Log in', new_user_session_path, class: "button btn btn-default navbar-btn") %>
+	        <% end %>
+	      </div>
+	    </div>
+	  </div>
+	</nav>
 </nav>
 
 <%= yield %>
