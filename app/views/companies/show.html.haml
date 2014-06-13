@@ -1,7 +1,7 @@
 .container-fluid
   .col-lg-12
     .col-lg-4
-      %h2= "Welcome back, #{@company.user.first_name}"
+      %h2= "Welcome Back #{current_user.first_name}"
       Company:
       = "#{@company.name}"
       %p

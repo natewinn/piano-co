@@ -1,1 +1,20 @@
-index.html.haml
+.container-fluid
+  .col-lg-12
+    .col-lg-4
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Company Name
+            %th Owner Name
+            %th Email Address
+            %th Update Profile
+            %th Delete Profile 
+        %tbody
+          - @companies.each do |f|
+            %tr
+              %td= f.name
+              - f.users.each do |u|
+                %td= "#{u.first_name} #{u.last_name}"
+                %td= u.email
+                %td= link_to "Update", edit_company_path(f), class: "button btn btn-xs btn-warning"
+                %td= link_to "Delete", company_path(f), method: :delete, class: "button btn btn-xs btn-danger"

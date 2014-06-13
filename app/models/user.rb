@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   devise  :database_authenticatable, :registerable, :confirmable,
   			  :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
-  has_many :company
+  belongs_to :company
 
 end
