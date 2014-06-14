@@ -1,14 +1,15 @@
 class CustomersController < ApplicationController
+	before_action :authenticate_user!
 
 	def index
-		@customers = Customer.all
+		@user = User.current
 	end
 
 	def new
 		@new_customer = Customer.new
 		@new_customer.phone_numbers.build
 		@new_customer.contacts.build
-		@new_customer.emails.build
+		@new_customer.email_addresses.build
 		@new_customer.addresses.build
 	end
 
@@ -18,7 +19,6 @@ class CustomersController < ApplicationController
 
 	def create
 		@new_customer = Customer.new(customer_params)
-		debugger
 		@new_customers.save ? redirect_to(customer_path(@customer)) : render(:action => :new)
 	end
 

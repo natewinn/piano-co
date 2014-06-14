@@ -1,4 +1,5 @@
 class ServicesController < ApplicationController
+	before_action :authenticate_user!
 
 	def index
 		@services = Services.all
