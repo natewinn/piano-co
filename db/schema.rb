@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613153834) do
+ActiveRecord::Schema.define(version: 20140614043249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
     t.boolean  "primary"
-    t.string   "type"
+    t.string   "address_type"
     t.string   "address_1"
     t.string   "address_2"
     t.string   "city"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140613153834) do
 
   create_table "emails", force: true do |t|
     t.boolean  "primary"
-    t.string   "type"
+    t.string   "email_type"
     t.string   "email_address"
     t.integer  "customer_id"
     t.datetime "created_at"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20140613153834) do
 
   create_table "phone_numbers", force: true do |t|
     t.boolean  "primary"
-    t.string   "type"
+    t.string   "phone_type"
     t.string   "number"
     t.integer  "customer_id"
     t.datetime "created_at"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20140613153834) do
     t.string   "model"
     t.string   "size"
     t.string   "serial_number"
-    t.string   "type"
+    t.string   "piano_type"
     t.string   "company_notes"
     t.integer  "service_interval"
     t.integer  "customer_id"

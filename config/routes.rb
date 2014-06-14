@@ -6,5 +6,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :companies
-
+  resources :customers
+  resources :phones
+  resources :emails
+  resources :addresses
 end

@@ -1,22 +1,25 @@
 class CustomersController < ApplicationController
 
 	def index
-		@customers = Customers.all
+		@customers = Customer.all
 	end
 
 	def new
 		@new_customer = Customer.new
+		@new_customer.phone_numbers.build
+		@new_customer.contacts.build
+		@new_customer.emails.build
+		@new_customer.addresses.build
 	end
 
 	def show
-		@customers = Customers.find(params[:id])
+		@customers = Customer.find(params[:id])
 	end
 
 	def create
-		@new_customers = Customers.new(customer_params)
-		if @new_customers.save
-			redirect_to :back
-		end
+		@new_customer = Customer.new(customer_params)
+		debugger
+		@new_customers.save ? redirect_to(customer_path(@customer)) : render(:action => :new)
 	end
 
 	def edit
