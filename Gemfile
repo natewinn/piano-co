@@ -11,7 +11,9 @@ gem 'turbolinks'
 gem 'devise'
 gem 'carrierwave'
 gem 'jbuilder', '~> 2.0'
-gem 'i18n', '~> 0.6.9'
+gem 'i18n', '0.6.9'
+gem 'bootstrap-sass', '~> 3.1.1'
+gem "geocoder"
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :test do
@@ -25,6 +27,7 @@ group :development do
   gem 'debugger'
   gem 'meta_request'
   gem 'spring'
+  gem "letter_opener"
 end
 
 group :production do

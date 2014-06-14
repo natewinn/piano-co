@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   root to: "users#index"
 
   resources :users
-
+  resources :companies
+  resources :customers
+  resources :phones
+  resources :emails
+  resources :addresses
 end

@@ -1,0 +1,11 @@
+class CreatePhoneNumbers < ActiveRecord::Migration
+  def change
+    create_table 		  :phone_numbers do |t|
+			t.boolean  		  :primary
+			t.string   		  :type
+			t.string   		  :number
+			t.integer  		  :customer_id
+      t.timestamps    
+    end
+  end
+end

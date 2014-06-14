@@ -1,0 +1,19 @@
+.container-fluid
+  .col-sm-offset-3.col-sm-6.col-sm-offset-3
+    / %h2= "Welcome Back #{current.first_name}"
+    Company:
+    = "#{@company.name}"
+    %p
+    Phone number:
+    = "#{@company.phone_number}"
+    %p 
+    Address:
+    %br
+    = "#{@company.address_1}"      
+    = "#{@company.address_2}"     
+    %br
+    = "#{@company.city}"
+    = "#{@company.state}"
+    = "#{@company.zip_code}"
+    %p
+    = link_to "Update", edit_company_path, :method => :get, :class => "button btn btn-danger"

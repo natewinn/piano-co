@@ -7,19 +7,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
-<% if user_signed_in? %>
-<li>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-</li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <a class="navbar-brand" href="#">Piano App</a>
+	      <ul class="nav navbar-nav">
+	        <li class="<%= 'active' if current_page?(customers_path) %>">
+	          <%= link_to "Customers", customers_path %>
+	        </li>
+	        <li class="<%= 'active' if current_page?(customers_path) %>">
+	          <%= link_to "Customers", customers_path %>
+	        </li>
+	        <li class="<%= 'active' if current_page?(customers_path) %>">
+	          <%= link_to "Customers", customers_path %>
+	        </li>
+	      </ul>
+	      <div class="navbar-left">
+	        <form class="navbar-form" role="search">
+	          <div class="form-group">
+	            <input class="form-control" placeholder="Search" type="text"></input>
+	          </div>
+	          <button class="btn btn-default" type="submit">Submit</button>
+	        </form>
+	      </div>
+	      <div class="navbar-right">
+	        <% if user_signed_in? %>
+	          <p class="navbar-text">Logged in as <%= current_user.first_name %> <%= current_user.last_name %></p>
+	          <%= link_to('Log out', destroy_user_session_path, :method => :delete, class: "button btn btn-default navbar-btn") %>
+	        <% else %>
+	          <%= link_to('Log in', new_user_session_path, class: "button btn btn-default navbar-btn") %>
+	        <% end %>
+	      </div>
+	    </div>
+	  </div>
+	</nav>
+</nav>
 
 <%= yield %>
 

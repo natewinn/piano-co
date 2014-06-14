@@ -1,0 +1,27 @@
+.container-fluid
+  .col-sm-offset-1.col-sm-10.col-sm-offset-1
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Customer Name
+          %th Email Address
+          %th Address
+          %th Phone
+          %th Next Service
+          %th Update Profile
+          %th Delete Profile 
+      %tbody 
+        - @customer.each do |f|
+          = f.contacts do |a|
+            %tr
+              %td= f.organization_name.present? ? "#{a.first_name} #{a.last_name}" : f.organization_name
+              = f.eaddresses do |b|
+                %td= b.name
+              = f.addresses do |c|
+                %td= "#{c.address_1} #{c.address_2} #{c.city}, #{c.state} #{c.zip_code}" 
+              = f.phone_numbers do |d|            
+                %td= d.number
+                %td= ""
+                %td= link_to "Update", edit_customer_path(f), class: "button btn btn-xs btn-warning"
+                %td= link_to "Delete", customer_path(f), method: :delete, class: "button btn btn-xs btn-danger"
+
