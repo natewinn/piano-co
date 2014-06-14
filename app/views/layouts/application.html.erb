@@ -12,14 +12,14 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <a class="navbar-brand" href="#">Piano App</a>
 	      <ul class="nav navbar-nav">
-	        <li class="<%= 'active' if current_page?(root_path) %>">
-	          <%= link_to "Customers", root_path %>
+	        <li class="<%= 'active' if current_page?(customers_path) %>">
+	          <%= link_to "Customers", customers_path %>
 	        </li>
-	        <li class="<%= 'active' if current_page?(root_path) %>">
-	          <%= link_to "Calendar", root_path %>
+	        <li class="<%= 'active' if current_page?(customers_path) %>">
+	          <%= link_to "Customers", customers_path %>
 	        </li>
-	        <li class="<%= 'active' if current_page?(root_path) %>">
-	          <%= link_to "Call List", root_path %>
+	        <li class="<%= 'active' if current_page?(customers_path) %>">
+	          <%= link_to "Customers", customers_path %>
 	        </li>
 	      </ul>
 	      <div class="navbar-left">
@@ -30,10 +30,9 @@
 	          <button class="btn btn-default" type="submit">Submit</button>
 	        </form>
 	      </div>
-	      <p class="navbar-text"><%= notice %></p>
-	      <p class="navbar-text"><%= alert %></p>
 	      <div class="navbar-right">
 	        <% if user_signed_in? %>
+	          <p class="navbar-text">Logged in as <%= current_user.first_name %> <%= current_user.last_name %></p>
 	          <%= link_to('Log out', destroy_user_session_path, :method => :delete, class: "button btn btn-default navbar-btn") %>
 	        <% else %>
 	          <%= link_to('Log in', new_user_session_path, class: "button btn btn-default navbar-btn") %>

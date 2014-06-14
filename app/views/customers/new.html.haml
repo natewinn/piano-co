@@ -45,7 +45,7 @@
         .well
           .control-group
             %label.control-label Email:
-            = f.fields_for :email_addresses do |e|
+            = f.fields_for :eaddresses do |e|
               .form-inline
                 = e.select(:email_type, options_for_select(["Main", "Home", "Work"]), {:prompt => "Email type"}, {:class => "form-control"})
               %br
