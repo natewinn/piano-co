@@ -1,4 +1,9 @@
 .container-fluid
+  .col-sm-offset-2.col-sm-8.col-sm-offset-2
+    .well.well-sm
+      %h4.text-center 
+        %span.glyphicon.glyphicon-calendar
+        Next Service Date is June 27, 2014
   .col-sm-offset-1.col-sm-4
     .panel.panel-default
       .panel-heading
@@ -57,5 +62,42 @@
           .panel-body
             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.    
 
-  .col-sm-6.col-sm-offset-1
-    .well
+  .col-sm-6
+    #accordion.panel-group
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %span.glyphicon.glyphicon-align-justify
+            %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseFour"}
+              &nbsp; Yamaha 49302
+        #collapseFour.panel-collapse.collapse.in
+          .panel-body
+            %img.img-responsive(src= "/assets/profile-piano-picture.jpg")
+            %h4 About this Piano
+            .col-sm-6  
+              Brand: Yamaha
+              %br
+              Model: 49302
+              %br
+              Size: 6ft.
+            .col-sm-6
+              SN#: NZD92340928ASD
+              %br
+              Type: Grand
+              %br
+              Schedule: 6 months
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Service Date
+                %th Technician
+                %th Invoice
+            %tbody 
+              %tr
+                %td January 24, 2014
+                %td Dan Smith
+                %td= link_to "View Invoice", customer_path, class: "button btn btn-xs btn-default"
+              %tr
+                %td January 24, 2014
+                %td Dan Smith
+                %td= link_to "View Invoice", customer_path, class: "button btn btn-xs btn-default"
