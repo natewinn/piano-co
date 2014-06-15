@@ -2,8 +2,7 @@ class CustomersController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@company = current_user.company
-		@customer = @company.customers
+		@customers = current_user.company.customers
 	end
 
 	def new
