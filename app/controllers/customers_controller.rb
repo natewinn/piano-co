@@ -15,6 +15,8 @@ class CustomersController < ApplicationController
 
 	def show
 		@customer = Customer.find(params[:id])
+		@phone_numbers = @customer.phone_numbers
+		@addresses = @customer.addresses
 	end
 
 	def create
@@ -24,7 +26,7 @@ class CustomersController < ApplicationController
 	end
 
 	def edit
-		@customer = Customer.find(params [:id])
+		@customer = Customer.find(params[:id])
 	end
 
 	def update

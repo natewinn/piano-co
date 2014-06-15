@@ -1,19 +1,61 @@
 .container-fluid
-  .col-sm-offset-3.col-sm-6.col-sm-offset-3
-    %h2= "#{@customer.contacts.first_name} #{@customer.contacts.first_name}"
-    / Company:
-    / = "#{@company.name}"
-    / %p
-    / Phone number:
-    / = "#{@company.phone_number}"
-    / %p 
-    / Address:
-    / %br
-    / = "#{@company.address_1}"      
-    / = "#{@company.address_2}"     
-    / %br
-    / = "#{@company.city}"
-    / = "#{@company.state}"
-    / = "#{@company.zip_code}"
-    / %p
-    / = link_to "Update", edit_company_path, :method => :get, :class => "button btn btn-danger"
+  .col-sm-offset-1.col-sm-4
+    .panel.panel-default
+      .panel-heading
+        %h2= "#{@customer.first_name} #{@customer.last_name}" 
+        %h4= "#{@customer.organization_name}"
+      .panel-body
+        - @addresses.each do |f|
+          - if f.primary == true
+            %h4= f.address_1
+            %h4= "#{f.city}, #{f.state} #{f.zip_code}"   
+      %ul.list-group
+        %li.list-group-item
+          - @phone_numbers.each do |f|
+            - if f.primary == true
+              %h4= link_to f.number, "tel:+1-#{f.number}"
+        / %li.list-group-item
+        /   - @eaddresses.each do |f|
+        /     - if f.primary == true
+        /       %h4= link_to f.name, "mailto:#{a.name}?subject=A Message from PianoScheduler"
+    #accordion.panel-group
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %span.glyphicon.glyphicon-user
+            %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseOne"}
+              &nbsp; Alternate Contact
+        #collapseOne.panel-collapse.collapse
+          .panel-body
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %span.glyphicon.glyphicon-home
+            %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseTwo"}
+              &nbsp; Alternate Address
+        #collapseTwo.panel-collapse.collapse
+          .panel-body
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %span.glyphicon.glyphicon-phone-alt
+            %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseTwo"}
+              &nbsp; Alternate Phone
+        #collapseThree.panel-collapse.collapse
+          .panel-body
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %span.glyphicon.glyphicon-envelope
+            %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseTwo"}
+              &nbsp; Alternate Email
+              .li.span.badge 2
+        #collapseThree.panel-collapse.collapse
+          .panel-body
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.    
+
+  .col-sm-6.col-sm-offset-1
+    .well
