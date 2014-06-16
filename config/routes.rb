@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :phones
   resources :emails
   resources :addresses
+  resources :services
+
 end
