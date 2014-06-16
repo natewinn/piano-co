@@ -13,5 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require fullcalendar
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+	$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			agenda: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			events: '/events.json', color: '#ff0000', textColor: '#fff',
+		});
+});

@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
 	def create
 		@customer = Customer.new(customer_params)
 		@customer.save
-			redirect_to customer_path(@customer)
+			redirect_to customers_path
 	end
 
 	def edit
@@ -32,7 +32,7 @@ class CustomersController < ApplicationController
 	def update
 		@customer = Customer.find(params[:id])
 		if @customer.update_customer(customer_params)
-			redirect_to customer_path
+			redirect_to customers_path
 		else
 			redirect_to edit_customer_path
 		end
@@ -42,10 +42,6 @@ class CustomersController < ApplicationController
 		@customer = Customer.find(params[:id])
 		@customer.destroy
 			redirect_to customer_path
-	end
-
-	def full_street_address
-  	[@customer.address_1, @customer.address_2, @customer.city, @customer.state, @customer.country].compact.join(', ')
 	end
 
 	private

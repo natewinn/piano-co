@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614235315) do
+ActiveRecord::Schema.define(version: 20140616190045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 20140614235315) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address_1"
-  end
-
-  create_table "appointments", force: true do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "work_order_id"
-    t.integer  "service_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "companies", force: true do |t|
@@ -94,6 +85,38 @@ ActiveRecord::Schema.define(version: 20140614235315) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "events", force: true do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "work_order_id"
+    t.integer  "service_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fullcalendar_engine_event_series", force: true do |t|
+    t.integer  "frequency",  default: 1
+    t.string   "period",     default: "monthly"
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.boolean  "all_day",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fullcalendar_engine_events", force: true do |t|
+    t.string   "title"
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.boolean  "all_day",         default: false
+    t.text     "description"
+    t.integer  "event_series_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fullcalendar_engine_events", ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id", using: :btree
 
   create_table "phone_numbers", force: true do |t|
     t.boolean  "primary"

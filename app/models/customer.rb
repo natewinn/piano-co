@@ -9,7 +9,4 @@ class Customer < ActiveRecord::Base
 
 	accepts_nested_attributes_for :contacts, :phone_numbers, :addresses, :eaddresses
 
-	geocoded_by :full_street_address
-	after_create :geo_code
-
 end

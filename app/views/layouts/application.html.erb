@@ -4,6 +4,8 @@
   <title>PianoCo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_tag do %>
+<% end %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -15,21 +17,21 @@
 	        <li class="<%= 'active' if current_page?(customers_path) %>">
 	          <%= link_to "Customers", customers_path %>
 	        </li>
-	        <li class="<%= 'active' if current_page?(customers_path) %>">
-	          <%= link_to "Customers", customers_path %>
+	        <li class="<%= 'active' if current_page?(services_path) %>">
+	          <%= link_to "Services", services_path %>
 	        </li>
-	        <li class="<%= 'active' if current_page?(customers_path) %>">
-	          <%= link_to "Customers", customers_path %>
+	        <li class="<%= 'active' if current_page?(events_path) %>">
+	          <%= link_to "Calendar", events_path %>
 	        </li>
 	      </ul>
-	      <div class="navbar-left">
+<!-- 	      <div class="navbar-left">
 	        <form class="navbar-form" role="search">
 	          <div class="form-group">
 	            <input class="form-control" placeholder="Search" type="text"></input>
 	          </div>
 	          <button class="btn btn-default" type="submit">Submit</button>
 	        </form>
-	      </div>
+	      </div> -->
 	      <div class="navbar-right">
 	        <% if user_signed_in? %>
 	          <p class="navbar-text">Logged in as <%= current_user.first_name %> <%= current_user.last_name %></p>

@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :emails
   resources :addresses
   resources :services
+  resources :events
 
 end
