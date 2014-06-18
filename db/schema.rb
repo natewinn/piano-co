@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616190045) do
+ActiveRecord::Schema.define(version: 20140617033536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: true do |t|
+  create_table "alt_addresses", force: true do |t|
     t.boolean  "primary"
     t.string   "address_type"
     t.string   "city"
@@ -28,6 +28,34 @@ ActiveRecord::Schema.define(version: 20140616190045) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address_1"
+  end
+
+  create_table "alt_contacts", force: true do |t|
+    t.boolean  "primary"
+    t.string   "salutation"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "alt_emails", force: true do |t|
+    t.boolean  "primary"
+    t.string   "email_type"
+    t.string   "name"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "alt_phones", force: true do |t|
+    t.boolean  "primary"
+    t.string   "phone_type"
+    t.string   "number"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "companies", force: true do |t|
@@ -46,16 +74,6 @@ ActiveRecord::Schema.define(version: 20140616190045) do
     t.datetime "updated_at"
   end
 
-  create_table "contacts", force: true do |t|
-    t.boolean  "primary"
-    t.string   "salutation"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "customer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "customers", force: true do |t|
     t.string   "organization_name"
     t.text     "notes"
@@ -64,15 +82,17 @@ ActiveRecord::Schema.define(version: 20140616190045) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
-  end
-
-  create_table "eaddresses", force: true do |t|
-    t.boolean  "primary"
-    t.string   "email_type"
-    t.string   "name"
-    t.integer  "customer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "address_1"
+    t.string   "city"
+    t.string   "state"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "phone_type"
+    t.string   "phone"
+    t.string   "salutation"
+    t.string   "e_address"
+    t.string   "e_address_type"
+    t.string   "zip_code"
   end
 
   create_table "employees", force: true do |t|
@@ -91,38 +111,6 @@ ActiveRecord::Schema.define(version: 20140616190045) do
     t.datetime "end_time"
     t.integer  "work_order_id"
     t.integer  "service_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "fullcalendar_engine_event_series", force: true do |t|
-    t.integer  "frequency",  default: 1
-    t.string   "period",     default: "monthly"
-    t.datetime "starttime"
-    t.datetime "endtime"
-    t.boolean  "all_day",    default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "fullcalendar_engine_events", force: true do |t|
-    t.string   "title"
-    t.datetime "starttime"
-    t.datetime "endtime"
-    t.boolean  "all_day",         default: false
-    t.text     "description"
-    t.integer  "event_series_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "fullcalendar_engine_events", ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id", using: :btree
-
-  create_table "phone_numbers", force: true do |t|
-    t.boolean  "primary"
-    t.string   "phone_type"
-    t.string   "number"
-    t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

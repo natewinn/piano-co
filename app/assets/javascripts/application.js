@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require underscore
+//= require gmaps/google
 //= require fullcalendar
 //= require turbolinks
 //= require_tree .

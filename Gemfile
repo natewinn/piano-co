@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap-glyphicons'
 gem 'fullcalendar-rails'
 gem 'jbuilder'
+gem 'gmaps4rails'
 gem "geocoder"
 gem 'rabl'
 gem 'oj'

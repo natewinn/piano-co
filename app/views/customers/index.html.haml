@@ -1,6 +1,7 @@
 .container-fluid
+  .col-sm-offset-4.col-sm-4.col-sm-offset-4
+    = link_to "Add New Customer", new_customer_path, class: "button btn btn-primary btn-sm pull-right"
   .col-sm-12
-    = link_to "New Customer", new_customer_path, class: "button btn btn-primary btn-sm pull-right"
     %table.table.table-hover
       %thead
         %tr
@@ -13,13 +14,9 @@
         - @customers.each do |f|
           %tr
             %td= "#{f.first_name} #{f.last_name}"
-            - f.eaddresses.each do |a|
-              - if a.primary == true
-                %td= link_to "#{a.name}", "mailto:#{a.name}?subject=A Message from PianoScheduler"
-            - f.addresses.each do |b|
-              - if b.primary == true
-                %td= "#{b.address_1} #{b.city}, #{b.state} #{b.zip_code}"
-            - f.phone_numbers.each do |c|            
-              - if c.primary == true
-                %td= link_to "#{c.number}", "tel:+1-#{c.number}"             
-              %td= link_to "View Profile", customer_path(f), class: "button btn btn-xs btn-default"
+            %td= link_to "#{f.e_address}", "mailto:#{f.e_address}?subject=A Message from PianoScheduler"
+            %td= link_to "#{f.address_1} #{f.city}, #{f.state} #{f.zip_code}", "https://www.google.com/maps/dir//#{f.latitude},#{f.longitude}/"
+            %td= link_to number_to_phone("#{f.phone}", area_code: true), "tel:+1-#{f.phone}"             
+            %td= link_to "View Profile", customer_path(f), class: "button btn btn-xs btn-default"
+
+            

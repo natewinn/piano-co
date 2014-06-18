@@ -9,20 +9,23 @@
       .panel-heading
         %h2= "#{@customer.first_name} #{@customer.last_name}" 
         %h4= "#{@customer.organization_name}"
-      .panel-body
-        - @addresses.each do |f|
-          - if f.primary == true
-            %h4= f.address_1
-            %h4= "#{f.city}, #{f.state} #{f.zip_code}"   
-      %ul.list-group
-        %li.list-group-item
-          - @phone_numbers.each do |f|
-            - if f.primary == true
-              %h4= link_to f.number, "tel:+1-#{f.number}"
-        / %li.list-group-item
-        /   - @eaddresses.each do |f|
-        /     - if f.primary == true
-        /       %h4= link_to f.name, "mailto:#{a.name}?subject=A Message from PianoScheduler"
+        = "#{@customer.address_1}"
+        %br
+        = "#{@customer.city}, #{@customer.state} #{@customer.zip_code}"
+        %p  
+        %span.glyphicon.glyphicon-phone-alt &nbsp;
+        = link_to number_to_phone("#{@customer.phone}", area_code: true), "tel:+1-#{@customer.phone}"
+        %p
+        %span.glyphicon.glyphicon-envelope  &nbsp;
+        = link_to @customer.e_address, "mailto:#{@customer.e_address}?subject=A Message from PianoScheduler}"
+      .panel-body.ignore   
+        #map{style: "width: 100%; height: 200px"}
+          = render 'map'
+      / %ul.list-group
+      /   %li.list-group-item
+      /     %h4= link_to number_to_phone("#{@customer.phone}", area_code: true), "tel:+1-#{@customer.phone}"
+      /   %li.list-group-item
+      /     %h4= link_to @customer.e_address, "mailto:#{@customer.e_address}?subject=A Message from PianoScheduler"
     #accordion.panel-group
       .panel.panel-default
         .panel-heading
@@ -62,7 +65,6 @@
         #collapseFour.panel-collapse.collapse
           .panel-body
             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.    
-
   .col-sm-6
     #accordion.panel-group
       .panel.panel-default
@@ -72,8 +74,9 @@
             %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseFive"}
               Yamaha Baby Grand
         #collapseFive.panel-collapse.collapse.in
-          .panel-body
+          .panel-body.ignore
             %img.img-responsive(src= "/assets/profile-piano-picture.jpg")
+          .panel-body
             %h4 About this Piano
             .col-sm-6  
               Brand: Yamaha
@@ -102,3 +105,20 @@
                 %td January 24, 2014
                 %td Dan Smith
                 %td= link_to "View Invoice", customer_path, class: "button btn btn-xs btn-default"
+
+
+/ Button trigger modal
+%button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal"}
+  Launch demo modal
+/ Modal
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Modal title
+      .modal-body
+        = render 'edit_form'
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+        %button.btn.btn-primary{type: "button"} Save changes
