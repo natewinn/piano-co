@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 
-belongs_to :work_order
+  belongs_to :service
+  belongs_to :company
+  belongs_to :customer
 
 end

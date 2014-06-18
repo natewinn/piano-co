@@ -28,14 +28,15 @@ class ServicesController < ApplicationController
 		if @service.update_attributes(service_params)
 			redirect_to services_path
 		else
-			redirect_to edit_service_path
+			redirect_to :back
 		end
 	end
 
 	def destroy
 		@service = Service.find(params[:id])
-		@service.destroy
-			redirect_to service_path
+		if @service.destroy
+			redirect_to services_path
+		end
 	end
 
 	private

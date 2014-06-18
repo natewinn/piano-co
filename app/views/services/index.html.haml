@@ -19,7 +19,7 @@
       #tuning.tab-pane.active
         .col-sm-12
           %br
-          %table.table.table-hover
+          %table.table.table-striped
             %thead
               %tr
                 %th Service
@@ -27,95 +27,105 @@
                 %th Duration
                 %th Customer View
                 %th Update 
+                %th Delete 
             %tbody
               - @services.each do |f|
                 - if f.category == "Tuning"
                   %tr
                     %td= f.name
-                    %td= f.cost
-                    %td= f.duration
+                    %td= "$#{f.cost}"
+                    %td= "#{f.duration} minutes"
                     %td= f.customer_view
                     %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
+                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
       #repair.tab-pane
         .col-sm-12
           %br
-          %table.table.table-hover
+          %table.table.table-striped
             %thead
               %tr
                 %th Service
                 %th Cost
                 %th Duration
                 %th Customer View
-                %th Update 
+                %th Update
+                %th Delete  
             %tbody
               - @services.each do |f|
                 - if f.category == "Repair"
                   %tr
                     %td= f.name
-                    %td= f.cost
-                    %td= f.duration
+                    %td= "$#{f.cost}"
+                    %td= "#{f.duration} minutes"
                     %td= f.customer_view
                     %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
+                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
       #restoration.tab-pane
         .col-sm-12
           %br
-          %table.table.table-hover
+          %table.table.table-striped
             %thead
               %tr
                 %th Service
                 %th Cost
                 %th Duration
                 %th Customer View
-                %th Update 
+                %th Update
+                %th Delete 
             %tbody
               - @services.each do |f|
                 - if f.category == "Restoration"
                   %tr
                     %td= f.name
-                    %td= f.cost
-                    %td= f.duration
+                    %td= "$#{f.cost}"
+                    %td= "#{f.duration} minutes"
                     %td= f.customer_view
                     %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
+                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
       #piano_disc.tab-pane
         .col-sm-12
           %br
-          %table.table.table-hover
+          %table.table.table-striped
             %thead
               %tr
                 %th Service
                 %th Cost
                 %th Duration
                 %th Customer View
-                %th Update 
+                %th Update
+                %th Delete 
             %tbody
               - @services.each do |f|
                 - if f.category == "Piano Disc"
                   %tr
                     %td= f.name
-                    %td= f.cost
-                    %td= f.duration
+                    %td= "$#{f.cost}"
+                    %td= "#{f.duration} minutes"
                     %td= f.customer_view
                     %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
+                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
       #moving.tab-pane
         .col-sm-12
           %br
-          %table.table.table-hover
+          %table.table.table-striped
             %thead
               %tr
                 %th Service
                 %th Cost
                 %th Duration
                 %th Customer View
-                %th Update 
+                %th Update
+                %th Delete 
             %tbody
               - @services.each do |f|
                 - if f.category == "Moving"
                   %tr
                     %td= f.name
-                    %td= f.cost
-                    %td= f.duration
+                    %td= "$#{f.cost}"
+                    %td= "#{f.duration} minutes"
                     %td= f.customer_view
                     %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
+                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
 
 #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog

@@ -6,6 +6,7 @@ class Customer < ActiveRecord::Base
 	has_many :alt_contacts
 	has_many :alt_emails
 	has_many :alt_phones
+	has_many :events
 
 	validates_presence_of :address_1, :city, :state, :zip_code
 
