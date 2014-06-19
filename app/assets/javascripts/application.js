@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require best_in_place
 //= require jquery_ujs
 //= require bootstrap
 //= require underscore
@@ -33,4 +34,8 @@ $(document).ready(function() {
 			},
 			events: '/events.json', color: '#ff0000', textColor: '#fff',
 		});
+});
+
+$(document).ready(function() {
+  jQuery(".best_in_place").best_in_place();
 });

@@ -4,13 +4,12 @@ Rails.application.routes.draw do
   
   root to: "users#index"
 
-  resources :users
   resources :companies
   resources :customers
-  resources :phones
-  resources :emails
-  resources :addresses
-  resources :services
   resources :events
+  resources :pianos
+  resources :services
+  resources :schedules
+  resources :users
 
 end

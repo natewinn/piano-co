@@ -19,6 +19,11 @@ gem 'gmaps4rails'
 gem "geocoder"
 gem 'rabl'
 gem 'oj'
+gem "fog", "~> 1.3.1"
+gem 'letter'
+gem 'mini_magick'
+gem "aws-sdk", "~>1.0"
+gem 'best_in_place', github: 'bernat/best_in_place', branch: "rails-4"
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

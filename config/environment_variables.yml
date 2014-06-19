@@ -1,0 +1,11 @@
+development:
+
+development:
+  S3_KEY: AKIAJMO75O6H5IDEGOBQ
+  S3_SECRET: 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
+  S3_BUCKET_NAME: pianocoapp
+
+production:
+  S3_KEY: AKIAJMO75O6H5IDEGOBQ
+  S3_SECRET: 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
+  S3_BUCKET_NAME: pianocoapp

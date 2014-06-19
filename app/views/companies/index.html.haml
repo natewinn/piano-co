@@ -12,8 +12,7 @@
         - @companies.each do |f|
           %tr
             %td= link_to "#{f.name}", company_path(f)
-            - f.users.each do |u|
-              %td= "#{u.first_name} #{u.last_name}"
+            - f.companies.each do |u|
               %td= link_to "#{u.email}", "mailto:#{u.email}?subject=A Message from PianoScheduler"
               %td= link_to "Update", edit_company_path(f), class: "button btn btn-xs btn-warning"
               %td= link_to "Delete", company_path(f), method: :delete, class: "button btn btn-xs btn-danger"

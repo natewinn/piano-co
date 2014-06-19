@@ -1,0 +1,147 @@
+<div class="container-fluid">
+  <div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+    <div class="well well-sm">
+      <h4 class="text-center">
+        <span class="glyphicon glyphicon-calendar"></span>
+        Next Service Date is June 27, 2014
+      </h4>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>
+          <%= best_in_place @customer, :first_name %>
+        </h2>
+        <h4>
+        </h4>
+        <%= "#{@customer.address_1}" %>
+        <br/>
+        <%= "#{@customer.city}, #{@customer.state} #{@customer.zip_code}" %>
+        <p></p>
+        <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
+        <%= link_to number_to_phone("#{@customer.phone}", area_code: true), "tel:+1-#{@customer.phone}" %>
+        <p></p>
+        <span class="glyphicon glyphicon-envelope">&nbsp;</span>
+        <%= link_to @customer.e_address, "mailto:#{@customer.e_address}?subject=A Message from PianoScheduler}" %>
+      </div>
+      <div class="panel-body ignore">
+        <div id="map" style="width: 100%; height: 200px">
+          <%= render 'map' %>
+        </div>
+      </div>
+    </div>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="glyphicon glyphicon-user">&nbsp;</span>
+            <a data-parent="#accordion" data-toggle="collapse" href="#collapseOne">
+              Alternate Contact
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="collapseOne">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="glyphicon glyphicon-home">&nbsp;</span>
+            <a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">
+              Alternate Address
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="collapseTwo">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
+            <a data-parent="#accordion" data-toggle="collapse" href="#collapseThree">
+              Alternate Phone
+              <div class="shift_right">
+                <div class="li span badge">2</div>
+              </div>
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="collapseThree">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="glyphicon glyphicon-envelope">&nbsp;</span>
+            <a data-parent="#accordion" data-toggle="collapse" href="#collapseFour">
+              Alternate Email
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="collapseFour">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <% if !@customer.pianos.exists?       %>
+      <%= form_for @piano, :html => {:multipart => true} do |f| %>
+        <div class="well">
+          Add a Customer
+          <%= f.text_field :brand, :placeholder => "Piano brand", :class => "form-control"       %>
+          <br/>
+          <%= f.text_field :model, :placeholder => "Piano model", :class => "form-control" %>
+          <br/>
+          <%= f.text_field :size, :placeholder => "Piano size", :class => "form-control" %>
+          <br/>
+          <%= f.text_field :serial_number, :placeholder => "Serial number", :class => "form-control" %>
+          <br/>
+          <%= f.select :piano_type, options_for_select(["Grand.", "Grand - Player", "Upright", "Upright - Player", "Console", "Spinet"]), {:prompt => ""}, {:class => "form-control"} %>
+          <br/>
+          <%= f.text_field :service_interval, :placeholder => "Service Interval", :class => "form-control" %>
+          <%= f.hidden_field :customer_id %>
+          <%= f.file_field :image %>
+          <br/>
+          <%= f.submit "Add Piano", :class => "btn btn-success" %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= render "pianos" %>
+  </div>
+</div>
+<!-- Button trigger modal
+-->
+<button class="btn btn-primary btn-lg" data-target="#myModal" data-toggle="modal">
+  Launch demo modal
+</button>
+<!-- Modal
+-->
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @customer do |f| %>
+          <%= render 'edit_form', f:f %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

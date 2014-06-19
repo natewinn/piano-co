@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
   respond_to :json
 
   def index
     @events = Event.all
     @event = Event.new
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render :index}
+    end
   end
 
   def show
