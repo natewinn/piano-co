@@ -21,6 +21,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.update_attributes(event_params)
+    if @event.save
+      redirect_to events_path
+    end
   end
 
   def update

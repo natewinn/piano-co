@@ -2,7 +2,7 @@ class ServicesController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@services = current_user.company.services
+		@services = Service.where(company_id: current_user.company_id)
     @new_service = Service.new
 	end
 

@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@customers = Customer.all
+		@customers = current_user.company.customers
 	end
 
 	def new
@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
 
 	def create
 		@customer = Customer.new(customer_params)
-		@customer.company_id = current_user.company.id
+		@customer.company_id = current_user.company_id
 		if @customer.save
 			redirect_to customers_path
 		else
