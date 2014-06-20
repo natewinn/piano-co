@@ -14,10 +14,9 @@
 	<nav class="navbar navbar-default" role="navigation">
 	  <div class="container-fluid">
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <a class="navbar-brand" href="#">Piano Manager</a>
+	      <%= link_to "Schedule Tune", customers_path, class: "navbar-brand" %>
 	      <ul class="nav navbar-nav">
 	        <li class="<%= 'active' if current_page?(customers_path) %>">
-	          <%= link_to "Customers", customers_path %>
 	        </li>
 	        <li class="<%= 'active' if current_page?(services_path) %>">
 	          <%= link_to "Services", services_path %>
@@ -26,20 +25,9 @@
 	          <%= link_to "Calendar", events_path %>
 	        </li>
 	      </ul>
-	      <!-- <div class="navbar-left">
-	        <form class="navbar-form" role="search">
-	          <div class="form-group">
-	            <div class="left-inner-addon ">
-    						<i class="glyphicon glyphicon-search"></i>
-    						<input type="text" class="form-control" />
-							</div>
-	          </div>
-	          <button class="btn btn-default" type="submit">Search</button>
-	        </form>
-	      </div> -->
 	      <div class="navbar-right">
 	        <% if user_signed_in? %>
-	          <p class="navbar-text"><%= current_user.first_name %> <%= current_user.last_name %></p>
+	          <p class="navbar-text"><%= current_user.company.name %></p>
 	          <%= link_to('Log out', destroy_user_session_path, :method => :delete, class: "button btn btn-default navbar-btn") %>
 	        <% else %>
 	          <%= link_to('Log in', new_user_session_path, class: "button btn btn-default navbar-btn") %>

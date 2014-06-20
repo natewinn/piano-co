@@ -1,6 +1,6 @@
 .container-fluid
   .col-sm-offset-1.col-sm-10.col-sm-offset-1
-    %button.btn.btn-primary.btn-sm.pull-right{"data-target" => "#myModal", "data-toggle" => "modal"}
+    %button.btn.btn-inverse.btn-sm.btn-embossed.mlm.pull-right{"data-target" => "#myModal", "data-toggle" => "modal"}
       Add new Service
     %ul.nav.nav-tabs
       %li.active
@@ -9,10 +9,6 @@
         %a{"data-toggle" => "tab", href: "#repair"} Repair
       %li
         %a{"data-toggle" => "tab", href: "#restoration"} Restoration
-      %li
-        %a{"data-toggle" => "tab", href: "#piano_disc"} Piano Disc
-      %li
-        %a{"data-toggle" => "tab", href: "#moving"} Moving
     / Tab panes
     .tab-content
       #tuning.tab-pane.active
@@ -24,19 +20,17 @@
                 %th Service
                 %th Cost
                 %th Duration
-                %th Customer View
-                %th Update 
-                %th Delete 
+                %th Description
+                %th Remove 
             %tbody
               - @services.each do |f|
                 - if f.category == "Tuning"
                   %tr
-                    %td= f.name
+                    %td= link_to "#{f.name}", edit_service_path(f)
                     %td= "$#{f.cost}"
-                    %td= "#{f.duration} minutes"
-                    %td= f.customer_view
-                    %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
-                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
+                    %td= "#{f.duration} min."
+                    %td= f.description
+                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
       #repair.tab-pane
         .col-sm-12
           %br
@@ -46,19 +40,17 @@
                 %th Service
                 %th Cost
                 %th Duration
-                %th Customer View
-                %th Update
-                %th Delete  
+                %th Description
+                %th Remove 
             %tbody
               - @services.each do |f|
                 - if f.category == "Repair"
                   %tr
-                    %td= f.name
+                    %td= link_to "#{f.name}", edit_service_path(f)
                     %td= "$#{f.cost}"
-                    %td= "#{f.duration} minutes"
-                    %td= f.customer_view
-                    %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
-                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
+                    %td= "#{f.duration} min."
+                    %td= f.description
+                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
       #restoration.tab-pane
         .col-sm-12
           %br
@@ -68,63 +60,17 @@
                 %th Service
                 %th Cost
                 %th Duration
-                %th Customer View
-                %th Update
-                %th Delete 
+                %th Description
+                %th Remove 
             %tbody
               - @services.each do |f|
                 - if f.category == "Restoration"
                   %tr
-                    %td= f.name
+                    %td= link_to "#{f.name}", edit_service_path(f)
                     %td= "$#{f.cost}"
-                    %td= "#{f.duration} minutes"
-                    %td= f.customer_view
-                    %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
-                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
-      #piano_disc.tab-pane
-        .col-sm-12
-          %br
-          %table.table.table-striped
-            %thead
-              %tr
-                %th Service
-                %th Cost
-                %th Duration
-                %th Customer View
-                %th Update
-                %th Delete 
-            %tbody
-              - @services.each do |f|
-                - if f.category == "Piano Disc"
-                  %tr
-                    %td= f.name
-                    %td= "$#{f.cost}"
-                    %td= "#{f.duration} minutes"
-                    %td= f.customer_view
-                    %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
-                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
-      #moving.tab-pane
-        .col-sm-12
-          %br
-          %table.table.table-striped
-            %thead
-              %tr
-                %th Service
-                %th Cost
-                %th Duration
-                %th Customer View
-                %th Update
-                %th Delete 
-            %tbody
-              - @services.each do |f|
-                - if f.category == "Moving"
-                  %tr
-                    %td= f.name
-                    %td= "$#{f.cost}"
-                    %td= "#{f.duration} minutes"
-                    %td= f.customer_view
-                    %td= link_to "Update", edit_service_path(f), class: "button btn btn-xs btn-warning"
-                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-danger"
+                    %td= "#{f.duration} min."
+                    %td= f.description
+                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
 
 #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
@@ -150,8 +96,6 @@
           %br         
           = f.text_area :description, :placeholder => "Description of Service", :class => "form-control"
           %br
-          = f.check_box :customer_view
-          %br
           = f.hidden_field :company_id, value: current_user.company.id
-          %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
-          = f.submit "Add Service", :class => "btn btn-success"
+          %button.btn.btn-default.btn-embossed.mlm{"data-dismiss" => "modal", type: "button", class: "push-right"} Close
+          = f.submit "Add Service", :class => "btn btn-inverse push-right btn-embossed mlm"
