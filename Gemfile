@@ -21,6 +21,7 @@ gem 'gmaps4rails'
 gem "geocoder"
 gem 'rabl'
 gem 'oj'
+gem 'bootstrap-datetimepicker-rails'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

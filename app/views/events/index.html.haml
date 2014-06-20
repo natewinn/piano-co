@@ -1,4 +1,30 @@
 .container-fluid
   .col-sm-12
-  =link_to "New Event", new_event_path
+  %a{"data-target" => "#myModal", "data-toggle" => "modal"} Add Task
   #calendar
+
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Book Appointment
+        %br
+        = form_for @event do |f|
+          %label.control-label Date\Time: &#160;&#160;
+          = f.datetime_local_field :start_time, min: Time.zone.today.beginning_of_year
+          %br
+          %label.control-label Customer:
+          = f.select :customer_id, Customer.all.collect { |a| [(a.first_name + " " + a.last_name), a.id]}, {:include_blank => false}, {:class => "form-control"}
+          %br
+          %label.control-label Customer:
+          = f.select :service_id, Service.all.collect { |b| [(b.name), b.id]}, {:include_blank => false}, {:class => "form-control"}
+          
+          = f.hidden_field :event_color, value: "#2ecc71"
+          = f.hidden_field :company_id, value: current_user.company_id
+          = f.hidden_field :full_day, value: false
+
+          %br 
+          %button.btn.btn-default.btn-embossed.mlm{"data-dismiss" => "modal", type: "button", class: "push-right"} Close
+          = f.submit "Add Service", :class => "btn btn-success push-right btn-embossed mlm"
+

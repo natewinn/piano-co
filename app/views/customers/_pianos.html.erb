@@ -5,7 +5,7 @@
         <h4 class="panel-title">
           <span class="glyphicon glyphicon-align-justify">&nbsp;</span>
           <a data-parent="#accordion" data-toggle="collapse" href="#collapse<%= n.to_s %>">
-            <%= f.brand %>
+            <%= f.brand %> <%= f.model %>
           </a>
         </h4>
       </div>
@@ -32,8 +32,6 @@
             Type:
             <%= f.piano_type %>
             <br/>
-            Schedule:
-            <%= f.service_interval %>
           </div>
         </div>
         <table class="table table-striped">

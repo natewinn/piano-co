@@ -30,6 +30,7 @@ GEM
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    bootstrap-datetimepicker-rails (0.0.11)
     bootstrap-glyphicons (0.0.1)
       railties (>= 3.0)
       sass (>= 3.2)
@@ -214,6 +215,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-datetimepicker-rails
   bootstrap-glyphicons
   bootstrap-sass (~> 3.1.1)
   carrierwave

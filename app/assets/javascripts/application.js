@@ -17,6 +17,7 @@
 //= require gmaps/google
 //= require fullcalendar
 //= require turbolinks
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 $(document).ready(function() {
@@ -26,11 +27,13 @@ $(document).ready(function() {
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
-			agenda: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
 			events: '/events.json', color: '#ff0000', textColor: '#fff',
 		});
+});
+
+$(function() {
+  $('#datetimepicker1').datetimepicker({
+    language: 'en',
+    pick12HourFormat: true
+  });
 });
