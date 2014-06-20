@@ -17,6 +17,7 @@
 	      <%= link_to "Schedule Tune", customers_path, class: "navbar-brand" %>
 	      <ul class="nav navbar-nav">
 	        <li class="<%= 'active' if current_page?(customers_path) %>">
+	          <%= link_to "Customers", customers_path %>
 	        </li>
 	        <li class="<%= 'active' if current_page?(services_path) %>">
 	          <%= link_to "Services", services_path %>

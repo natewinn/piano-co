@@ -13,12 +13,12 @@
         = f.text_field :organization_name, :placeholder => "Organization name", :class => "form-control"
       .well
         %label.control-label Phone:
-        = f.select :phone_type, options_for_select(["Main", "Home", "Work", "Church", "Other"]), {:prompt => ""}, {:class => "form-control"}     
+        = f.select :phone_type, options_for_select(["Main", "Home", "Work", "Other"]), {:prompt => ""}, {:class => "form-control"}     
         %br
         = f.text_field :phone, :placeholder => "Phone number", :class => "form-control"
       .well
         %label.control-label Address:    
-        = f.text_field :address_1, :placeholder => "Adddress 1", :class => "form-control"
+        = f.text_field :address_1, :placeholder => "Adddress", :class => "form-control"
         %br
         = f.text_field :city, :placeholder => "City", :class => "form-control"
         %br        

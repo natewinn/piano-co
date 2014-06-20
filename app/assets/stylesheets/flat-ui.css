@@ -416,20 +416,20 @@ you can use the generic selector below, but it's slower:
 }
 body {
   font-family: "Lato", Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.72222;
   color: #34495e;
   background-color: #ffffff;
 }
 a {
-  color: #16a085;
+  color: #34495e;
   text-decoration: none;
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
 a:hover,
 a:focus {
-  color: #1abc9c;
+  color: #2ecc71;
   text-decoration: none;
 }
 a:focus {
@@ -469,7 +469,7 @@ h6,
 .h5,
 .h6 {
   font-family: inherit;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.1;
   color: inherit;
 }
@@ -485,7 +485,7 @@ h6 small,
 .h4 small,
 .h5 small,
 .h6 small {
-  color: #e7e9ec;
+  color: #34495e;
 }
 h1,
 h2,

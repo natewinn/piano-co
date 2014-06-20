@@ -1,76 +1,71 @@
+.dialog.dialog-success
+  / %span.glyphicon.glyphicon-user &nbsp;
+  %button.btn.btn-success.btn-wide.mll.btn-embossed.mlm{"data-target" => "#myModal", "data-toggle" => "modal"}
+    Add a New Service
 .container-fluid
   .col-sm-offset-1.col-sm-10.col-sm-offset-1
-    %button.btn.btn-inverse.btn-sm.btn-embossed.mlm.pull-right{"data-target" => "#myModal", "data-toggle" => "modal"}
-      Add new Service
-    %ul.nav.nav-tabs
+    %ul.nav.nav-tabs.nav-append-content
       %li.active
         %a{"data-toggle" => "tab", href: "#tuning"} Tuning
       %li
         %a{"data-toggle" => "tab", href: "#repair"} Repair
       %li
         %a{"data-toggle" => "tab", href: "#restoration"} Restoration
-    / Tab panes
     .tab-content
       #tuning.tab-pane.active
-        .col-sm-12
-          %br
-          %table.table.table-striped
-            %thead
-              %tr
-                %th Service
-                %th Cost
-                %th Duration
-                %th Description
-                %th Remove 
-            %tbody
-              - @services.each do |f|
-                - if f.category == "Tuning"
-                  %tr
-                    %td= link_to "#{f.name}", edit_service_path(f)
-                    %td= "$#{f.cost}"
-                    %td= "#{f.duration} min."
-                    %td= f.description
-                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Service
+              %th Cost
+              %th Duration
+              %th Description
+              %th Remove 
+          %tbody
+            - @services.each do |f|
+              - if f.category == "Tuning"
+                %tr
+                  %td= link_to "#{f.name}", edit_service_path(f)
+                  %td= "$#{f.cost}"
+                  %td= "#{f.duration} min."
+                  %td= f.description
+                  %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
       #repair.tab-pane
-        .col-sm-12
-          %br
-          %table.table.table-striped
-            %thead
-              %tr
-                %th Service
-                %th Cost
-                %th Duration
-                %th Description
-                %th Remove 
-            %tbody
-              - @services.each do |f|
-                - if f.category == "Repair"
-                  %tr
-                    %td= link_to "#{f.name}", edit_service_path(f)
-                    %td= "$#{f.cost}"
-                    %td= "#{f.duration} min."
-                    %td= f.description
-                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Service
+              %th Cost
+              %th Duration
+              %th Description
+              %th Remove 
+          %tbody
+            - @services.each do |f|
+              - if f.category == "Repair"
+                %tr
+                  %td= link_to "#{f.name}", edit_service_path(f)
+                  %td= "$#{f.cost}"
+                  %td= "#{f.duration} min."
+                  %td= f.description
+                  %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
       #restoration.tab-pane
-        .col-sm-12
-          %br
-          %table.table.table-striped
-            %thead
-              %tr
-                %th Service
-                %th Cost
-                %th Duration
-                %th Description
-                %th Remove 
-            %tbody
-              - @services.each do |f|
-                - if f.category == "Restoration"
-                  %tr
-                    %td= link_to "#{f.name}", edit_service_path(f)
-                    %td= "$#{f.cost}"
-                    %td= "#{f.duration} min."
-                    %td= f.description
-                    %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Service
+              %th Cost
+              %th Duration
+              %th Description
+              %th Remove 
+          %tbody
+            - @services.each do |f|
+              - if f.category == "Restoration"
+                %tr
+                  %td= link_to "#{f.name}", edit_service_path(f)
+                  %td= "$#{f.cost}"
+                  %td= "#{f.duration} min."
+                  %td= f.description
+                  %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
 
 #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
