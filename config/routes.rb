@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :addresses
   resources :services
   resources :events
+  resources :pianos
 
 end

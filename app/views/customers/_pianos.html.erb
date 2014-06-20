@@ -1,0 +1,67 @@
+<% @pianos.all.each_with_index do |f, n|   %>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <span class="glyphicon glyphicon-align-justify">&nbsp;</span>
+          <a data-parent="#accordion" data-toggle="collapse" href="#collapse<%= n.to_s %>">
+            <%= f.brand %>
+          </a>
+        </h4>
+      </div>
+      <div class="panel-collapse collapse <%= (n == 0 ? "in" : "") %>" id="collapse<%= n.to_s %>">
+        <div class="panel-body ignore">
+          <img class="img-responsive" src="<%= f.image.large.url %>">
+        </div>
+        <div class="panel-body">
+          <h4>About this Piano</h4>
+          <div class="col-sm-6">
+            Brand:
+            <%= f.brand %>
+            <br/>
+            Model:
+            <%= f.model %>
+            <br/>
+            Size:
+            <%= f.size %>
+          </div>
+          <div class="col-sm-6">
+            SN#:
+            <%= f.serial_number %>
+            <br/>
+            Type:
+            <%= f.piano_type %>
+            <br/>
+            Schedule:
+            <%= f.service_interval %>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Service Date</th>
+              <th>Technician</th>
+              <th>Invoice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>January 24, 2014</td>
+              <td>Dan Smith</td>
+              <td>
+                <%= link_to "View Invoice", customer_path, class: "button btn btn-xs btn-default" %>
+              </td>
+            </tr>
+            <tr>
+              <td>January 24, 2014</td>
+              <td>Dan Smith</td>
+              <td>
+                <%= link_to "View Invoice", customer_path, class: "button btn btn-xs btn-default" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

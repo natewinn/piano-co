@@ -7,6 +7,7 @@ class Customer < ActiveRecord::Base
 	has_many :alt_emails
 	has_many :alt_phones
 	has_many :events
+	has_many :pianos
 
 	validates_presence_of :address_1, :city, :state, :zip_code
 

@@ -11,6 +11,10 @@
     pointer-events: none;
 }
 
+.center-div {
+  margin-right: auto;
+  margin-left: auto;
+}
 
 /* Remove padding from profile images */
 

@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
 gem 'carrierwave'
+gem "mini_magick"
+gem 'fog', "~> 1.3.1"
 gem 'i18n', '0.6.9'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap-glyphicons'
