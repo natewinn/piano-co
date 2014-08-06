@@ -17,7 +17,7 @@
           %label.control-label Customer:
           = f.select :customer_id, Customer.all.collect { |a| [(a.first_name + " " + a.last_name), a.id]}, {:include_blank => false}, {:class => "form-control"}
           %br
-          %label.control-label Customer:
+          %label.control-label Service:
           = f.select :service_id, Service.all.collect { |b| [(b.name), b.id]}, {:include_blank => false}, {:class => "form-control"}
           
           = f.hidden_field :event_color, value: "#2ecc71"

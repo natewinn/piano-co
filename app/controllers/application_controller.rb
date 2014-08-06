@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
   # end
 
 	def after_sign_in_path_for(user)
-	  if current_user.sign_in_count == 10
+	  if current_user.sign_in_count == 1
 	    new_company_path
     else
-      company_path(user.company_id)
+      customers_path
 	  end
 	end
 

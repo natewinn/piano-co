@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
 		@hash = Gmaps4rails.build_markers(@customer) do |customer, marker|
 		  marker.lat customer.latitude
 		  marker.lng customer.longitude
-		  marker.infowindow "<a target='blank' href='https://www.google.com/maps/dir//#{customer.latitude},#{customer.longitude}/'>Directions to #{customer.first_name},#{customer.last_name}</a>"
+		  marker.infowindow "<a target='blank' href='https://www.google.com/maps/dir//#{customer.latitude},#{customer.longitude}/'>Directions to #{customer.first_name} #{customer.last_name}</a>"
 		  marker.json({ title: customer.first_name })
 		end
 	end

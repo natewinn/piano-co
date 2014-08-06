@@ -29,9 +29,9 @@
 	      <div class="navbar-right">
 	        <% if user_signed_in? %>
 	          <p class="navbar-text"><%= current_user.company.name %></p>
-	          <%= link_to('Log out', destroy_user_session_path, :method => :delete, class: "button btn btn-default navbar-btn") %>
+	          <%= link_to('Log out', destroy_user_session_path, :method => :delete, class: "button btn btn-small btn-inverse btn-embossed navbar-btn") %>
 	        <% else %>
-	          <%= link_to('Log in', new_user_session_path, class: "button btn btn-default navbar-btn") %>
+	          <%= link_to('Log in', new_user_session_path, class: "button btn btn-small btn-inverse btn-embossed navbar-btn") %>
 	        <% end %>
 	      </div>
 	    </div>
