@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  root to: "users#index"
+  root to: "customers#index"
 
   resources :users
   resources :companies
@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :phones
   resources :emails
   resources :addresses
+  resources :services
+  resources :events
+  resources :pianos
+
 end

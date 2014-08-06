@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   # 	short_address = full_address.reject(&:empty?).join(' ')
   # end
 
-  # around_filter :user_time_zone, if: :current_user
+	def after_sign_in_path_for(user)
+	  if current_user.sign_in_count == 1
+	    new_company_path
+    else
+      customers_path
+	  end
+	end
 
 end

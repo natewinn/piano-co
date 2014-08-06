@@ -5,6 +5,8 @@ class Company < ActiveRecord::Base
 	has_many :users
 	has_many :services
 	has_many :customers
-	has_many :employees
+	has_many :events
+  
+  has_many :services, :through => :events
 
 end

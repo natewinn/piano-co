@@ -1,0 +1,21 @@
+.container-fluid
+  .col-sm-offset-2.col-sm-6.col-sm-offset-4
+    %h6 
+      = "Service for #{@event.customer.first_name} #{@event.customer.last_name}"
+    %p
+    %b Start Time:
+    %br
+    = "#{format_date(@event.start_time)}"
+    %p
+    %b End Time:
+    %br
+    = "#{format_date(@event.end_time)}"
+    %p 
+    %b Address:
+    %br
+    %td= link_to "#{@event.customer.address_1} #{@event.customer.city}, #{@event.customer.state} #{@event.customer.zip_code}", "https://www.google.com/maps/dir//#{@event.customer.latitude},#{@event.customer.longitude}/"
+    %br    
+    %td= link_to number_to_phone("#{@event.customer.phone}", area_code: true), "tel:+1-#{@event.customer.phone}"
+    %p
+    #map{style: "width: 50%; height: 200px"}
+      = render 'maps'

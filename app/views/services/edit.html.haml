@@ -1,0 +1,24 @@
+.container-fluid
+  .col-sm-offset-3.col-sm-6.col-sm-offset-3
+    %h2= "Update #{@service.name}"
+    = form_for @service do |f|
+      = f.label "Name:"
+      = f.text_field :name, :class => "form-control"
+      %p
+      = f.label "Cost:"
+      = f.text_field :cost, :class => "form-control"
+      %p
+      = f.label "Duration:"
+      = f.text_field :duration, :class => "form-control"
+      %span.help-block Input duration in minutes.
+      %p
+      = f.label "Category:"
+      = f.select :category, options_for_select(["Tuning", "Repair", "Restoration", "Moving", "Piano Disc"]), {:prompt => ""}, {:class => "form-control"}
+      %p
+      = f.label "Description:"
+      = f.text_area :description, :class => "form-control"
+      %p
+      = f.label "Can a customer view?"
+      = f.check_box :description     
+      %br
+      = f.submit "Update Record"

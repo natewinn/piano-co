@@ -1,54 +1,35 @@
-/ = New Customer = /
 .container-fluid
   .col-sm-offset-3.col-sm-6.col-sm-offset-3
     %h3 Add a Customer
-    = form_for @new_customer do |f|
-      .span4
-        .well
-          .control-group
-          = f.fields_for :contacts do |c|
-            .form-group
-              .form-inline
-                = c.select :salutation, options_for_select(["Dr.", "Mr.", "Mrs.", "Miss"]), {:prompt => "Salutation"}, {:class => "form-control"}       
-            = c.text_field :first_name, :placeholder => "First name", :class => "form-control"
-            %br        
-            = c.text_field :last_name, :placeholder => "Last name", :class => "form-control"
-          %br
-          = f.text_field :organization_name, :placeholder => "Organization name", :class => "form-control"
-      .span4
-        .well
-          .control-group
-            %label.control-label Phone:
-            = f.fields_for :phone_numbers do |p|
-              .form-group
-                .form-inline  
-                  = p.select :phone_type, options_for_select(["Main", "Home", "Work"]), {:prompt => "Phone type"}, {:class => "form-control"}     
-              = p.text_field :number, :placeholder => "Phone number", :class => "form-control"
-      .span4
-        .well
-          .control-group
-            %label.control-label Address:
-            = f.fields_for :addresses do |a|
-              .form-inline
-                = a.select(:address_type, options_for_select(["Main", "Home", "Work"]), {:prompt => "Address type"}, {:class => "form-control"})
-              %br        
-              = a.text_field :address_1, :placeholder => "Adddress 1", :class => "form-control"
-              %br
-              = a.text_field :address_2, :placeholder => "Adddress 2", :class => "form-control"
-              %br
-              = a.text_field :city, :placeholder => "City", :class => "form-control"
-              %br        
-              = a.text_field :state, :placeholder => "State", :class => "form-control"
-              %br
-              = a.text_field :zip_code, :placeholder => "Zip Code", :class => "form-control"
-      .span4
-        .well
-          .control-group
-            %label.control-label Email:
-            = f.fields_for :eaddresses do |e|
-              .form-inline
-                = e.select(:email_type, options_for_select(["Main", "Home", "Work"]), {:prompt => "Email type"}, {:class => "form-control"})
-              %br
-              = e.text_field :name, :placeholder => "Email Address", :class => "form-control"
+    = form_for @new_customer, url: customers_path do |f|
+      .well
+        %label.control-label Name:
+        = f.select :salutation, options_for_select(["Dr.", "Mr.", "Mrs.", "Miss"]), {:prompt => ""}, {:class => "form-control"}       
+        %br
+        = f.text_field :first_name, :placeholder => "First name", :class => "form-control"
+        %br        
+        = f.text_field :last_name, :placeholder => "Last name", :class => "form-control"
+        %br
+        = f.text_field :organization_name, :placeholder => "Organization name", :class => "form-control"
+      .well
+        %label.control-label Phone:
+        = f.select :phone_type, options_for_select(["Main", "Home", "Work", "Other"]), {:prompt => ""}, {:class => "form-control"}     
+        %br
+        = f.text_field :phone, :placeholder => "Phone number", :class => "form-control"
+      .well
+        %label.control-label Address:    
+        = f.text_field :address_1, :placeholder => "Adddress", :class => "form-control"
+        %br
+        = f.text_field :city, :placeholder => "City", :class => "form-control"
+        %br        
+        = f.text_field :state, :placeholder => "State", :class => "form-control"
+        %br
+        = f.text_field :zip_code, :placeholder => "Zip Code", :class => "form-control"
+      .well
+        %label.control-label Email:
+        = f.select(:e_address_type, options_for_select(["Main", "Home", "Work", "Church", "Other"]), {:prompt => ""}, {:class => "form-control"})
+        %br
+        = f.text_field :e_address, :placeholder => "Email Address", :class => "form-control"
+        = f.hidden_field :company_id, value: current_user.company_id
       %br
       = f.submit "Add Customer", class: "button btn btn-default"

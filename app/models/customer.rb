@@ -2,14 +2,20 @@ class Customer < ActiveRecord::Base
 
 	belongs_to :company
 	
-	has_many :contacts 
-	has_many :phone_numbers
-	has_many :addresses
-	has_many :eaddresses
+	has_many :alt_addresses 
+	has_many :alt_contacts
+	has_many :alt_emails
+	has_many :alt_phones
+	has_many :events
+	has_many :pianos
 
-	accepts_nested_attributes_for :contacts, :phone_numbers, :addresses, :eaddresses
+	validates_presence_of :address_1, :city, :state, :zip_code
 
-	geocoded_by :full_street_address
-	after_create :geo_code
+	geocoded_by :address
+	after_validation :geocode
+
+	def address
+	  [address_1, city, state, zip_code].compact.join(', ')
+	end
 
 end

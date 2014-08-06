@@ -1,27 +1,21 @@
+.dialog.dialog-success
+  / %span.glyphicon.glyphicon-user &nbsp;
+  = link_to "Add a New Customer", new_customer_path, class: "button btn btn-success btn-wide mll btn-embossed mlm"
 .container-fluid
-  .col-sm-offset-1.col-sm-10.col-sm-offset-1
-    %table.table.table-hover
+  .col-sm-12
+    %table.table.table-striped
       %thead
         %tr
           %th Customer Name
           %th Email Address
           %th Address
           %th Phone
-          %th Next Service
-          %th Update Profile
-          %th Delete Profile 
+          %th Remove 
       %tbody 
-        - @customer.each do |f|
-          = f.contacts do |a|
-            %tr
-              %td= f.organization_name.present? ? "#{a.first_name} #{a.last_name}" : f.organization_name
-              = f.eaddresses do |b|
-                %td= b.name
-              = f.addresses do |c|
-                %td= "#{c.address_1} #{c.address_2} #{c.city}, #{c.state} #{c.zip_code}" 
-              = f.phone_numbers do |d|            
-                %td= d.number
-                %td= ""
-                %td= link_to "Update", edit_customer_path(f), class: "button btn btn-xs btn-warning"
-                %td= link_to "Delete", customer_path(f), method: :delete, class: "button btn btn-xs btn-danger"
-
+        - @customers.each do |f|
+          %tr
+            %td= link_to "#{f.first_name} #{f.last_name}", customer_path(f)
+            %td= link_to "#{f.e_address}", "mailto:#{f.e_address}?subject=A Message from #{current_user.company.name}"
+            %td= link_to "#{f.address_1} #{f.city}, #{f.state} #{f.zip_code}", "https://www.google.com/maps/dir//#{f.latitude},#{f.longitude}/"
+            %td= link_to number_to_phone("#{f.phone}", area_code: true), "tel:+1-#{f.phone}"             
+            %td= link_to "Delete", customer_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"

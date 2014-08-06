@@ -2,11 +2,8 @@ class ServicesController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@services = Services.all
-	end
-
-	def new
-		@new_service = Service.new
+		@services = Service.where(company_id: current_user.company_id)
+    @new_service = Service.new
 	end
 
 	def show
@@ -16,33 +13,36 @@ class ServicesController < ApplicationController
 	def create
 		@new_service = Service.new(service_params)
 		if @new_service.save
+			redirect_to services_path
+		else
 			redirect_to :back
 		end
 	end
 
 	def edit
-		@service = Service.find(params [:id])
+		@service = Service.find(params[:id])
 	end
 
 	def update
 		@service = Service.find(params[:id])
-		if @service.update_service(service_params)
-			redirect_to service_path
+		if @service.update_attributes(service_params)
+			redirect_to services_path
 		else
-			redirect_to edit_service_path
+			redirect_to :back
 		end
 	end
 
 	def destroy
 		@service = Service.find(params[:id])
-		@service.destroy
-			redirect_to service_path
+		if @service.destroy
+			redirect_to services_path
+		end
 	end
 
 	private
 
 	def service_params
-		params.require(:service).permit(:start_time, :end_time, :off_start_time, :off_end_time, :phone, :company_id)
+		params.require(:service).permit!
 	end
 
 end

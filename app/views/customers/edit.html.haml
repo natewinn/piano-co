@@ -1,0 +1,22 @@
+.container-fluid
+  .col-sm-offset-3.col-sm-6.col-sm-offset-3
+    %h2= "Update #{@customer.name}"
+    = form_for @company do |f|
+      = f.label "Phone:"
+      = f.text_field :phone_number, :class => "form-control"
+      %p
+      = f.label "Street address:"
+      = f.text_field :address_1, :class => "form-control"
+      %br
+      = f.text_field :address_2, :class => "form-control"
+      %p
+      = f.label "City:"
+      = f.text_field :city, :class => "form-control"
+      %p
+      = f.label "State:"
+      = f.text_field :state, :class => "form-control"
+      %p
+      = f.label "Zip code:"
+      = f.text_field :zip_code, :class => "form-control" 
+      %br
+      = f.submit "Update Record", :class => "btn btn-success"

@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@employees = Employees.all
+		@employees = current_user.company.employees
 	end
 
 	def new

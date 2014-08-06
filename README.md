@@ -6,7 +6,6 @@
 ## User Stories
 1. User can login with devise(includes CRUD for user's account)
 2. User can CRUD company
-
 3. User can CRUD services
 4. User can CRUD customers
 5. User can CRUD employees

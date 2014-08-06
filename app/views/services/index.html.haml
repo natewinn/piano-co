@@ -1,0 +1,96 @@
+.dialog.dialog-success
+  / %span.glyphicon.glyphicon-user &nbsp;
+  %button.btn.btn-success.btn-wide.mll.btn-embossed.mlm{"data-target" => "#myModal", "data-toggle" => "modal"}
+    Add a New Service
+.container-fluid
+  .col-sm-offset-1.col-sm-10.col-sm-offset-1
+    %ul.nav.nav-tabs.nav-append-content
+      %li.active
+        %a{"data-toggle" => "tab", href: "#tuning"} Tuning
+      %li
+        %a{"data-toggle" => "tab", href: "#repair"} Repair
+      %li
+        %a{"data-toggle" => "tab", href: "#restoration"} Restoration
+    .tab-content
+      #tuning.tab-pane.active
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Service
+              %th Cost
+              %th Duration
+              %th Description
+              %th Remove 
+          %tbody
+            - @services.each do |f|
+              - if f.category == "Tuning"
+                %tr
+                  %td= link_to "#{f.name}", edit_service_path(f)
+                  %td= "$#{f.cost}"
+                  %td= "#{f.duration} min."
+                  %td= f.description
+                  %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
+      #repair.tab-pane
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Service
+              %th Cost
+              %th Duration
+              %th Description
+              %th Remove 
+          %tbody
+            - @services.each do |f|
+              - if f.category == "Repair"
+                %tr
+                  %td= link_to "#{f.name}", edit_service_path(f)
+                  %td= "$#{f.cost}"
+                  %td= "#{f.duration} min."
+                  %td= f.description
+                  %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
+      #restoration.tab-pane
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Service
+              %th Cost
+              %th Duration
+              %th Description
+              %th Remove 
+          %tbody
+            - @services.each do |f|
+              - if f.category == "Restoration"
+                %tr
+                  %td= link_to "#{f.name}", edit_service_path(f)
+                  %td= "$#{f.cost}"
+                  %td= "#{f.duration} min."
+                  %td= f.description
+                  %td= link_to "Delete", service_path(f), method: :delete, class: "button btn btn-xs btn-inverse btn-embossed mlm"
+
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Add a new service
+        %br
+        = form_for @new_service do |f|
+          = f.text_field :name, :placeholder => "Service Name", :class => "form-control"
+          %br
+          .input-group.input-group
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-usd
+            = f.text_field :cost, :placeholder => "Service Cost", :class => "form-control" 
+          %br
+          .input-group.input-group
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-dashboard     
+            = f.text_field :duration, :placeholder => "Time", :class => "form-control"
+          %br 
+          = f.select :category, options_for_select(["Tuning", "Repair", "Restoration", "Moving", "Piano Disc"]), {:include_blank => true}, {:class => "form-control"}
+          %br         
+          = f.text_area :description, :placeholder => "Description of Service", :class => "form-control"
+          %br
+          = f.hidden_field :company_id, value: current_user.company.id
+          %button.btn.btn-default.btn-embossed.mlm{"data-dismiss" => "modal", type: "button", class: "push-right"} Close
+          = f.submit "Add Service", :class => "btn btn-success push-right btn-embossed mlm"

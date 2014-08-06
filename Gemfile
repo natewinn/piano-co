@@ -10,10 +10,19 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
 gem 'carrierwave'
-gem 'jbuilder', '~> 2.0'
+gem "mini_magick"
+gem 'fog', "~> 1.3.1"
 gem 'i18n', '0.6.9'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-glyphicons'
+gem 'fullcalendar-rails'
+gem 'jbuilder'
+gem 'gmaps4rails'
 gem "geocoder"
+gem 'rabl'
+gem 'oj'
+gem 'bootstrap-datetimepicker-rails'
+
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :test do

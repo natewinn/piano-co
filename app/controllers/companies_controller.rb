@@ -15,11 +15,12 @@ class CompaniesController < ApplicationController
 
 	def create
 		@new_company = Company.new(company_params)
-		@new_company.user_id = current_user.id 
 		if @new_company.save
-			redirect_to company_path(@new_company.id)
+			current_user.company_id = @new_company.id
+			current_user.save
+			redirect_to customers_path
 		else 
-			redirect_to :back
+			redirect_to customers_path
 		end
 	end
 

@@ -11,16 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614140042) do
+ActiveRecord::Schema.define(version: 20140620051737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: true do |t|
+  create_table "alt_addresses", force: true do |t|
     t.boolean  "primary"
     t.string   "address_type"
-    t.string   "address_1"
-    t.string   "address_2"
     t.string   "city"
     t.string   "state"
     t.string   "zip_code"
@@ -29,13 +27,33 @@ ActiveRecord::Schema.define(version: 20140614140042) do
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_1"
   end
 
-  create_table "appointments", force: true do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "work_order_id"
-    t.integer  "service_id"
+  create_table "alt_contacts", force: true do |t|
+    t.boolean  "primary"
+    t.string   "salutation"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "alt_emails", force: true do |t|
+    t.boolean  "primary"
+    t.string   "email_type"
+    t.string   "name"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "alt_phones", force: true do |t|
+    t.boolean  "primary"
+    t.string   "phone_type"
+    t.string   "number"
+    t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,7 +63,6 @@ ActiveRecord::Schema.define(version: 20140614140042) do
     t.string   "phone_number"
     t.string   "time_zone"
     t.string   "address_1"
-    t.string   "address_2"
     t.string   "city"
     t.string   "state"
     t.integer  "zip_code"
@@ -56,51 +73,39 @@ ActiveRecord::Schema.define(version: 20140614140042) do
     t.datetime "updated_at"
   end
 
-  create_table "contacts", force: true do |t|
-    t.boolean  "primary"
-    t.string   "salutation"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "customer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "customers", force: true do |t|
     t.string   "organization_name"
     t.text     "notes"
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "eaddresses", force: true do |t|
-    t.boolean  "primary"
-    t.string   "email_type"
-    t.string   "name"
-    t.integer  "customer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "employees", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_1"
+    t.string   "city"
+    t.string   "state"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "phone_type"
     t.string   "phone"
+    t.string   "salutation"
+    t.string   "e_address"
+    t.string   "e_address_type"
+    t.string   "zip_code"
+  end
+
+  create_table "events", force: true do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "off_start_time"
-    t.datetime "off_end_time"
+    t.integer  "service_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "phone_numbers", force: true do |t|
-    t.boolean  "primary"
-    t.string   "phone_type"
-    t.string   "number"
+    t.string   "event_color"
+    t.boolean  "full_day"
     t.integer  "customer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.boolean  "confirmed"
+    t.boolean  "paid"
   end
 
   create_table "pianos", force: true do |t|
@@ -114,6 +119,18 @@ ActiveRecord::Schema.define(version: 20140614140042) do
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+  end
+
+  create_table "schedules", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "buffer_time"
+    t.datetime "day_off"
+    t.datetime "day_start"
+    t.string   "event_color"
+    t.string   "all_day_event"
+    t.integer  "company_id"
   end
 
   create_table "services", force: true do |t|
@@ -152,16 +169,5 @@ ActiveRecord::Schema.define(version: 20140614140042) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "work_orders", force: true do |t|
-    t.string   "cost"
-    t.boolean  "complete"
-    t.boolean  "paid"
-    t.integer  "customer_id"
-    t.integer  "employee_id"
-    t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

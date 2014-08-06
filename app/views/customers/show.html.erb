@@ -1,0 +1,129 @@
+<div class="container-fluid">
+  <div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+    <div class="well well-sm">
+      <h6 class="text-center">
+        <span class="glyphicon glyphicon-calendar"></span>
+        Next Service Date is June 27, 2014
+      </h6>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><%= "#{@customer.first_name} #{@customer.last_name}"  %></h4>
+        <h6><%= "#{@customer.organization_name}" %></h5>
+        <%= "#{@customer.address_1}" %>
+        <br/>
+        <%= "#{@customer.city}, #{@customer.state} #{@customer.zip_code}" %>
+        <p></p>
+        <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
+        <%= number_to_phone("#{@customer.phone}", area_code: true) %>
+        <p></p>
+        <span class="glyphicon glyphicon-envelope">&nbsp;</span>
+        <%= @customer.e_address %>
+      </div>
+      <div class="panel-body ignore">
+        <div id="map" style="width: 100%; height: 200px">
+          <%= render 'map' %>
+        </div>
+      </div>
+    </div>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="glyphicon glyphicon-user">&nbsp;</span>
+            <a data-parent="#accordion" data-toggle="collapse" href="#collapseOne">
+              Alternate Contact
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="collapseOne">
+          <div class="panel-body">
+            Nathan Winn</br> 
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="glyphicon glyphicon-home">&nbsp;</span>
+            <a data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">
+              Alternate Address
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="collapseTwo">
+          <div class="panel-body">
+            Church</br>
+            420 S. White Horse Pike</br>
+            Berlin, NJ 08009</br>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
+            <a data-parent="#accordion" data-toggle="collapse" href="#collapseThree">
+              Alternate Phone
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="collapseThree">
+          <div class="panel-body">
+            Cell: (408) 645-1814</br>
+            Office: (408) 645-1926</br>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="glyphicon glyphicon-envelope">&nbsp;</span>
+            <a data-parent="#accordion" data-toggle="collapse" href="#collapseFour">
+              Alternate Email
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" id="collapseFour">
+          <div class="panel-body">
+            Home: nsf474@gmail.com    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-6">
+    <% if !@customer.pianos.exists? %>
+      <%= form_for @piano do |f| %>
+        <div class="well">
+          <h6>Add a Piano</h6>
+          <div class="form-inline center-div">
+            <%= f.text_field :brand, :placeholder => "Piano brand", :class => "form-control" %>
+            &#160;&#160;
+            <%= f.text_field :model, :placeholder => "Piano model", :class => "form-control" %>
+          </div>
+          <br/>
+          <div class="form-inline center-div">
+            <%= f.text_field :size, :placeholder => "Piano size", :class => "form-control" %>
+            &#160;&#160;
+            <%= f.text_field :serial_number, :placeholder => "Serial number", :class => "form-control" %>
+          </div>
+          <br/>
+          <div class="form-inline center-div">
+            <label for="inputEmail3" class="col-sm-3 control-label">Piano Type:</label>
+            <%= f.select :piano_type, options_for_select(["Grand", "Grand - Player", "Upright", "Upright - Player", "Console", "Spinet"]), {:prompt => ""}, {:class => "form-control"} %>
+          </div>          
+          <br/>
+          <%= f.file_field :image %>
+          <br/>
+          <%= f.hidden_field :customer_id %>
+          <%= f.submit "Add a New Piano", :class => "button btn btn-success btn-wide btn-embossed mlm" %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= render "pianos" %>
+  </div>
+</div>
