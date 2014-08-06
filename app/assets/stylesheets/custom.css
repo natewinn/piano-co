@@ -44,21 +44,8 @@ a:focus {
   text-decoration: none;
 }
 
-.header {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background: url(<%= asset_path 'background_1.jpg' %>) no-repeat fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  }
-
 .login-box {
   padding-top: 75%;
   display: table-cell;
   text-align: left;
   }
-
-  -o-background-size: cover;
-  background-size: cover;
-}
