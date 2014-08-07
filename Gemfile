@@ -11,14 +11,14 @@ gem 'turbolinks'
 gem 'devise'
 gem 'carrierwave'
 gem "mini_magick"
-gem 'fog', "~> 1.3.1"
+gem 'fog', '~> 1.3.1'
 gem 'i18n', '0.6.9'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap-glyphicons'
 gem 'fullcalendar-rails'
 gem 'jbuilder'
 gem 'gmaps4rails'
-gem "geocoder"
+gem 'geocoder'
 gem 'rabl'
 gem 'oj'
 gem 'bootstrap-datetimepicker-rails'
@@ -36,7 +36,7 @@ group :development do
   gem 'debugger'
   gem 'meta_request'
   gem 'spring'
-  gem "letter_opener"
+  gem 'letter_opener'
 end
 
 group :production do
