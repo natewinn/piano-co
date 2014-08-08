@@ -81,7 +81,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.routes.default_url_options[:host] = 'http://schedule-tune.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = 'http://schedule-tune.herokuapp.com/'
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -89,7 +89,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'gmail.com',
     user_name:            'jow.winn',
-    password:             'jowiekid',
+    password:             'jowiekid17',
     authentication:       'plain',
     enable_starttls_auto: true  }
     
