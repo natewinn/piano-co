@@ -36,7 +36,6 @@ group :development do
   gem 'debugger'
   gem 'meta_request'
   gem 'spring'
-  gem 'letter_opener'
 end
 
 group :production do
